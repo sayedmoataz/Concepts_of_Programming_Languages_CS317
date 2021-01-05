@@ -16,8 +16,8 @@ driver.implicitly_wait(8)
 #find the username input field and write the passed email
 #replace "User9596917" with the email that will like ,comment or follow others
 #replace "medO123@!" with the password of new email
-username = driver.find_element_by_css_selector("input[name='username']").send_keys("User9596917")
-password = driver.find_element_by_css_selector("input[name='password']").send_keys("medO123@!"+Keys.ENTER)
+username = driver.find_element_by_css_selector("input[name='username']").send_keys(my_email)
+password = driver.find_element_by_css_selector("input[name='password']").send_keys(my_password+Keys.ENTER)
 #wait for loadding
 sleep(5)
 #while openning instagram there is a pop-up shown to enable notification
@@ -27,7 +27,7 @@ if driver.find_elements_by_css_selector('div.mt3GC > button.aOOlW.HoLwm'):
     driver.find_element_by_css_selector("div.mt3GC > button.aOOlW.HoLwm").click()  #click at "Not now" botton
 #do a search to find the user that we will like or comment his/her posts
 #replace "instagram" with destination person
-driver.find_element_by_css_selector("div.LWmhU._0aCwM > input").send_keys("mohammad._.kher")  # Search about instagram
+driver.find_element_by_css_selector("div.LWmhU._0aCwM > input").send_keys(his_email)  # Search about instagram
 sleep(4)
 #make sure from the username as we will select first search result here
 firstChoice = driver.find_element_by_xpath("/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[4]/div/a[1]").click()
@@ -54,7 +54,7 @@ nextPic = driver.find_element_by_css_selector("body > div._2dDPU.CkGkG > div.EfH
 print("success")
 sleep(2)
 #repeat the previous code 10 times
-for i in range(100):
+for i in range(10):
     driver.find_element_by_css_selector("body > div._2dDPU.CkGkG > div.zZYga > div > article > div.eo2As > section.ltpMr.Slqrh > span.fr66n > button").click()
     sleep(2)
     textArea = driver.find_element_by_class_name("Ypffh")
@@ -67,10 +67,3 @@ for i in range(100):
     nextPic.click()
     print("success")
     sleep(2)
-    
-driver.get("https://www.instagram.com/explore/people/suggested/")
-#now we will go to "Suggestions For You" section to follow more accounts
-for x in range(10):
-    #press on follow button for the first 100 account with 5 second delay
-    driver.find_element_by_xpath("//*[@id=\"react-root\"]/section/main/div/div[2]/div/div/div[i]/div[3]/button").click()
-    sleep(5)
