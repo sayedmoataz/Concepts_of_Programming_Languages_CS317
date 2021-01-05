@@ -5,9 +5,74 @@ from time import sleep
 import time
 from selenium.webdriver.common.keys import Keys
 
-####################################
-######## PUT GUI CODE HERE #########
-####################################
+
+########################GGGGUUUUUIIIII###########
+import tkinter as tk
+
+
+HEIGHT = 600
+WIDTH = 600
+
+
+root = tk.Tk()
+
+def show():
+    my_email = entry.get()
+    print(my_email)
+    my_password = entry2.get()
+    print(my_password)
+    his_email = entry3.get()
+    print(his_email)
+    root.mainloop()
+    
+def follow():
+    my_email = entry.get()
+    print(my_email)
+    my_password = entry2.get()
+    print(my_password)
+    root.mainloop()
+    
+
+canvas = tk.Canvas(root, height=HEIGHT, width=WIDTH)
+canvas.pack()
+
+frame = tk.Frame(root, bg='#80c1ff', bd=5)
+frame.place(relx=0.5, rely=0.1, relwidth=1, relheight=0.1, anchor='n')
+
+entry = tk.Entry(frame, font=40)
+entry.place(relwidth=0.65, relheight=1)
+
+label = tk.Label(frame, text="Enter your email", font=40)
+label.place(relx=0.7, relheight=1, relwidth=0.3)
+
+
+
+frame2 = tk.Frame(root, bg='#80c1ff', bd=5)
+frame2.place(relx=0.5, rely=0.3, relwidth=1, relheight=0.1, anchor='n')
+
+entry2 = tk.Entry(frame2, font=40)
+entry2.place(relwidth=0.65, relheight=1)
+
+label2 = tk.Label(frame2, text="Enter your password", font=40)
+label2.place(relx=0.7, relheight=1, relwidth=0.317)
+
+
+
+frame3 = tk.Frame(root, bg='#80c1ff', bd=5)
+frame3.place(relx=0.5, rely=0.5, relwidth=1, relheight=0.1, anchor='n')
+
+entry3 = tk.Entry(frame3, font=40)
+entry3.place(relwidth=0.65, relheight=1)
+
+label3 = tk.Label(frame3, text="Email of user", font=40)
+label3.place(relx=0.7, relheight=1, relwidth=0.317)
+
+button1 = tk.Button(root, text="Like and comment", font=40,anchor = 'se' ,command=lambda:show()).pack()
+button2 = tk.Button(root, text="Follow", font=40,anchor = 'sw' , command=lambda:follow()).pack()
+
+root.mainloop()
+
+
 #web driver that we will run our project on it
 driver = webdriver.Chrome()
 #make the window mazmize or fullscreen
@@ -17,10 +82,10 @@ driver.get("https://www.instagram.com/")
 #wait 8 seconds to load and search
 driver.implicitly_wait(8)
 #find the username input field and write the passed email
-# replace "User9596917" with the email that will like ,comment or follow others
+#replace "User9596917" with the email that will like ,comment or follow others
 #replace "medO123@!" with the password of new email
-username = driver.find_element_by_css_selector("input[name='username']").send_keys("User9596917")
-password = driver.find_element_by_css_selector("input[name='password']").send_keys("medO123@!"+Keys.ENTER)
+username = driver.find_element_by_css_selector("input[name='username']").send_keys(show().myemail)
+password = driver.find_element_by_css_selector("input[name='password']").send_keys(show().my_password)
 #wait for loadding
 sleep(5)
 #while openning instagram there is a pop-up shown to enable notification
